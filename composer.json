@@ -7,9 +7,14 @@
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
+        "gasparesganga/php-shapefile": "^3.4",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hisamu/php-xbase": "^2.0",
+        "laravel/fortify": "^1.8",
         "laravel/framework": "^8.54",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.3",
+        "org.majkel/dbase": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
