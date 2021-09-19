@@ -20,7 +20,12 @@ class MapController extends Controller
     // public function __construct(){
     //     $closed_rings = Shapefile::ACTION_FORCE;
     // }
-    
+    private $originPath;
+    public function __construct()
+    {
+        $this->originPath = "./data";
+    }
+
     public function index()
     {
         return view('web.map-view');
@@ -30,15 +35,11 @@ class MapController extends Controller
     public function shpToGeojson(){
         try {
             // $Shapefile = new ShapefileReader('mygeodata/TES-polygon.shp');
-            $testShp = 4;
+            $testShp = 1;
             $geoData=[];
-            $originPath = '/media/bandrigo/WORK/My Project/Data/';
             $shpData = [
-                ["path" => $originPath."Infrastruktur/Infrastruktur Pendidikan/Sebaran_SD_SMP.shp","geotype"=>"Point"],
-                ["path" => $originPath."status_hutan/TORA_I.shp","geotype"=>"Polygon"],
-                ["path" => $originPath."Infrastruktur/Infrastruktur Jalan/Jembatan/Jembatan.shp","geotype"=>"MultiPoint"],
-                ["path" => $originPath."DAS1984.shp","geotype"=>"Polygon"],
-                ["path" => $originPath."Garis_Pantai1984.shp","geotype"=>"MultiLineString"],
+                ["path" => $this->originPath."/Administrasi/Batas_Desa/Batas_Desa.shp", "geotype"=>"Polygon"],
+                ["path" => $this->originPath."/Administrasi/Batas_Kecamatan/Batas_Kecamatan.shp", "geotype"=>"MultiPolygon"],
             ];
             $Shapefile = new ShapefileReader($shpData[$testShp]["path"]);
             foreach ($Shapefile as $i => $Geometry) {
@@ -46,8 +47,10 @@ class MapController extends Controller
                     continue;
                 }
                 $geoJson = json_decode($Geometry->getGeoJSON($flag_bbox = false, $flag_feature = true));
-                $geoJson->geometry->type = $shpData[$testShp]["geotype"];
-                $geoData[] = $geoJson;
+                if($geoJson->geometry->type=='PolygonM'){
+                    $geoJson->geometry->type = "Polygon";
+                    $geoData[] = $geoJson;
+                }
                 
             }
             return json_encode($geoData);
@@ -61,7 +64,14 @@ class MapController extends Controller
 
     public function dbf_reader(){
         try {
-            $table = new TableEditor('/media/bandrigo/WORK/My Project/Data/Infrastruktur/Infrastruktur Pendidikan/Sebaran_SD_SMP.dbf');
+            $table = new TableEditor($this->originPath."/Administrasi/Batas_Kecamatan/Batas_Kecamatan.dbf");
+//             $table = new TableReader('test.dbf');
+
+// while ($record = $table->nextRecord()) {
+//     echo $record->get('my_column');
+//     //or
+//     echo $record->my_column;
+// }
             $columns=[];
             $render = "<table border='1'>";
             $render .= "<thead>";
@@ -75,10 +85,10 @@ class MapController extends Controller
             $render .="<tbody>";
             $i=1;
             while ($record = $table->nextRecord()) {
-                if($record->get('id')==1){
-                    // $record->set('name')="aaaa";
-                    $record->set('name', 'beaaaaarubah');
-                }
+                // if($record->get('id')==1){
+                //     // $record->set('name')="aaaa";
+                //     $record->set('name', 'beaaaaarubah');
+                // }
                 $render .= "<tr>";
                 foreach($columns as $col){
                     $render .="<td>".$record->get($col)."</td>";
@@ -97,7 +107,7 @@ class MapController extends Controller
             echo $render;
             // return array('status'=>"sukses");
         } catch (\Throwable $th) {
-            // return $th;
+            return $th;
             return array('status'=>"gagal","info"=>$th);
         }
         

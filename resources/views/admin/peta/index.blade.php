@@ -38,7 +38,7 @@
 <!--end row-->
 <!-- end page title end breadcrumb -->
 <div class="row">
-    @include('admin.dokumen.menu')
+    @include('admin.peta.menu')
 
     <div class="col-lg-9">
         <div class="">

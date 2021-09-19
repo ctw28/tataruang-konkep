@@ -183,8 +183,8 @@
         //     console.log(f.properties[key]);
         // }
         // console.log(f.geometry.coordinates)
-        console.log(f.properties)
-            l.bindPopup(`${f.properties.NAMA_UNSUR} <br><br> <button id='detail' style='text-align:center'>Detail</button>`);
+        console.log(f)
+            l.bindPopup(`${f.properties.WADMKC} <br><br> <button id='detail' style='text-align:center'>Detail</button>`);
     }
     var myStyle = {
     "color": "#ff7800",
