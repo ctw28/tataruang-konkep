@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class KategoriPetaController extends Controller
+class WebController extends Controller
 {
-    //
 }

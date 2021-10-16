@@ -11,11 +11,12 @@ class PetaKategori extends Model
 
     protected $fillable = [
         'peta_kategori_nama',
-        'peta_kategori_deskipsi'
+        'peta_kategori_slug',
+        'peta_kategori_deskripsi'
     ];
 
-    // public function dokumen()
-    // {
-    //     return $this->hasMany('App\Models\Dokumen');
-    // }
+    public function peta()
+    {
+        return $this->hasMany('App\Models\Peta');
+    }
 }

@@ -6,7 +6,7 @@
                             class="align-self-center menu-icon"></i><span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="widgets.html"><i data-feather="map"
+                    <a href="{{route('admin.peta.kategori.index')}}"><i data-feather="map"
                             class="align-self-center menu-icon"></i><span>Maps</span></a>
                 </li>
 

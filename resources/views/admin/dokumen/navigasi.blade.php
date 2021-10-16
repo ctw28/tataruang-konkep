@@ -28,18 +28,18 @@
             <div class="card-body">
                 <div class="files-nav">
                     <div class="nav flex-column nav-pills" id="files-tab" aria-orientation="vertical">
-                        <a class="nav-link @if($data['dokumenActive']=='semua') active @endif"
+                        <a class="nav-link @if($dokumenActive=='semua') active @endif"
                             href="{{route('admin.dokumen.index','semua')}}">
                             <i data-feather="folder" class="align-self-center icon-dual-file icon-sm me-3"></i>
                             <div class="d-inline-block align-self-center">
                                 <h5 class="m-0">Semua Dokumen</h5>
-                                <small>{{$data['dokumenTotal']}} File</small>
+                                <small>{{$dokumenTotal}} File</small>
                             </div>
                         </a>
 
-                        @foreach ($data['dokumenKategori'] as $kategori)
+                        @foreach ($dokumenKategori as $kategori)
 
-                        <a class="nav-link @if ($data['dokumenActive']==$kategori->dokumen_kategori_slug) active @endif"
+                        <a class="nav-link @if ($dokumenActive==$kategori->dokumen_kategori_slug) active @endif"
                             href="{{route('admin.dokumen.index',$kategori->dokumen_kategori_slug)}}">
 
                             <i data-feather="folder" class="align-self-center icon-dual-file icon-sm me-3"></i>

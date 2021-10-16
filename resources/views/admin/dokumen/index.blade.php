@@ -36,21 +36,21 @@
     <!--end col-->
 </div>
 <!--end row-->
-<!-- end page title end breadcrumb -->
+
 <div class="row">
-    @include('admin.dokumen.menu')
+    @include('admin.dokumen.navigasi')
 
     <div class="col-lg-9">
         <div class="">
             <div class="tab-content" id="files-tabContent">
 
                 <div class="tab-pane fade show active" id="files-projects">
-                    <h4 class="card-title mt-0 mb-3">{{$data['dataDokumenJudul']}}</h4>
+                    <h4 class="card-title mt-0 mb-3">{{$dataDokumenJudul}}</h4>
                     <div class="file-box-content">
-                        @if (count($data['dataDokumen']) == 0)
+                        @if (count($dataDokumen) == 0)
                         Tidak Ada file
                         @else
-                        @foreach ($data['dataDokumen'] as $dokumen)
+                        @foreach ($dataDokumen as $dokumen)
 
                         <div class="file-box">
                             <a href="#" class="download-icon-link">

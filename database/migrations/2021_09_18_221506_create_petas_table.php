@@ -16,13 +16,14 @@ class CreatePetasTable extends Migration
         Schema::create('petas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('peta_kategori_id');
-            $table->string('peta_nama',150);
-            $table->string('peta_slug',200);
-            $table->string('peta_deskripsi',200);
-            $table->string('folder_path',200);
+            $table->string('peta_nama', 150);
+            $table->string('peta_slug', 200);
+            $table->string('peta_deskripsi', 200)->nullable();
+            $table->string('peta_folder_path', 200);
             $table->timestamps();
 
-            $table->foreign('peta_kategori_id')->references('id')->on('peta_kategoris');        });
+            $table->foreign('peta_kategori_id')->references('id')->on('peta_kategoris');
+        });
     }
 
     /**

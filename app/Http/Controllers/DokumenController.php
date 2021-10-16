@@ -28,9 +28,7 @@ class DokumenController extends Controller
         }
         $data['dokumenActive'] = $slug;
         // return $data;
-        return view('admin.dokumen.index',[
-            'data' => $data
-        ]);
+        return view('admin.dokumen.index',$data);
         // return view('admin.dokumen.index');
     }
     

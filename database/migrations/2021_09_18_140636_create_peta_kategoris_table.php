@@ -17,7 +17,7 @@ class CreatePetaKategorisTable extends Migration
             $table->id();
             $table->string('peta_kategori_nama');
             $table->string('peta_kategori_slug');
-            $table->string('peta_kategori_deskipsi');
+            $table->string('peta_kategori_deskripsi')->nullable();
             $table->timestamps();
         });
     }
