@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\DokumenKategoriController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PetaController;
+use App\Http\Controllers\Admin\SurveyController;
 
 
 /*
@@ -28,12 +31,28 @@ Route::get('/edit-dbf', [MapController::class, 'dbf_reader'])->name('dbf');
 Route::get('/add-dbf', [MapController::class, 'dbf_add_column'])->name('dbf.add');
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+Route::get('/dokumen/kategori/{slug}', [WebController::class, 'index'])->name('web.dokumen');
 
 Route::group(['prefix' => 'admin/dokumen'], function () {
-    Route::get('/{slug}', [DokumenController::class, 'index'])->name('admin.dokumen.index');
-    Route::get('/tambah', [DokumenController::class, 'create'])->name('admin.dokumen.create');
-    Route::post('/simpan', [DokumenController::class, 'store'])->name('admin.dokumen.store');
+    //kategori dokumen
+    Route::get('/kategori', [DokumenKategoriController::class, 'index'])->name('admin.dokumen.kategori.index');
+    Route::get('/kategori/tambah', [DokumenKategoriController::class, 'create'])->name('admin.dokumen.kategori.create');
+    Route::post('/kategori/simpan', [DokumenKategoriController::class, 'store'])->name('admin.dokumen.kategori.store');
+
+    //kategori
+    Route::get('/kategori/{dokumenKategoriId}', [DokumenController::class, 'index'])->name('admin.dokumen.index');
+    Route::get('/kategori/{dokumenKategoriId}/tambah', [DokumenController::class, 'create'])->name('admin.dokumen.create');
+    Route::post('/kategori/{dokumenKategoriId}/simpan', [DokumenController::class, 'store'])->name('admin.dokumen.store');
 });
+Route::group(['prefix' => 'admin/survey'], function () {
+    //Survey
+    Route::get('/', [SurveyController::class, 'index'])->name('admin.survey.index');
+    Route::get('/tambah', [SurveyController::class, 'create'])->name('admin.survey.create');
+    Route::post('/simpan', [SurveyController::class, 'store'])->name('admin.survey.store');
+});
+
+
+
 Route::group(['prefix' => 'admin'], function () {
 
     //kategori

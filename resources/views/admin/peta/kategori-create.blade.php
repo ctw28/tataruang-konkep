@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-lg-12">
-                <form action="{{route('admin.peta.kategori.store')}}" method="POST" class="form-horizontal form-label-left">
+                <form action="{{route('admin.peta.kategori.store')}}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="peta_kategori_nama" class="col-sm-2 form-label align-self-center mb-lg-0">Nama Kategori</label>

@@ -11,7 +11,7 @@ class Dokumen extends Model
 
     protected $fillable = [
         'dokumen_kategori_id',
-        'dokumen_oleh_user_id',
+        'user_id',
         'dokumen_nama',
         'dokumen_slug',
         'dokumen_lokasi_file',

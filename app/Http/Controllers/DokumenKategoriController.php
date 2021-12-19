@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenKategori;
+use Illuminate\Support\Str;
+
 use Illuminate\Http\Request;
 
 class DokumenKategoriController extends Controller
@@ -14,7 +16,9 @@ class DokumenKategoriController extends Controller
      */
     public function index()
     {
-        //
+        $data['title'] = "Dokumen";
+        $data['dokumenKategori'] = DokumenKategori::withCount('dokumen')->get();
+        return view('admin.dokumen.kategori-index', $data);
     }
 
     /**
@@ -25,6 +29,8 @@ class DokumenKategoriController extends Controller
     public function create()
     {
         //
+        $data['title'] = "Tambah Kategori Dokumen";
+        return view('admin.dokumen.kategori-create', $data);
     }
 
     /**
@@ -35,7 +41,13 @@ class DokumenKategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->request->add(['dokumen_kategori_slug' => Str::slug($request->dokumen_kategori_nama, '-')]); //add request
+            DokumenKategori::create($request->all());
+            return redirect()->route('admin.dokumen.kategori.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

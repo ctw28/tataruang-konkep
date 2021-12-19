@@ -14,19 +14,10 @@
                     </ol>
                 </div>
                 <!--end col-->
-                <div class="col-auto align-self-center">
-                    <button class="btn btn-outline-primary btn-sm add-file"><i class="fas fa-plus me-2 "></i>Tambah
-                        kategori Baru</button>
-                    <div class="add-file btn btn-outline-primary btn-sm position-relative overflow-hidden">
-                        <i class="las la-cloud-upload-alt me-2 font-15"></i>Upload File
-                        <input type="file" name="file" class="add-file-input" />
-                    </div>
-                    <input id="Add_File" type="file" name="files[]" multiple style='display: none;'>
+                <!-- <div class="col-auto align-self-center">
+                    
 
-                    <a href="#" class="btn btn-sm btn-outline-primary">
-                        <i data-feather="download" class="align-self-center icon-xs"></i>
-                    </a>
-                </div>
+                </div> -->
                 <!--end col-->
             </div>
             <!--end row-->
@@ -45,12 +36,13 @@
             <div class="tab-content" id="files-tabContent">
 
                 <div class="tab-pane fade show active" id="files-projects">
-                    <h4 class="card-title mt-0 mb-3">{{$dataDokumenJudul}}</h4>
-                    <div class="file-box-content">
-                        @if (count($dataDokumen) == 0)
+                    <h4 class="card-title mt-0 mb-3">{{$dokumenKategori->dokumen_kategori_nama}}</h4>
+                    <a href="{{route('admin.dokumen.create',$dokumenKategori->id)}}" class="btn btn-primary btn-sm add-file"><i class="fas fa-plus me-2 "></i>Tambah Dokumen</a>
+                    <div class="file-box-content mt-2">
+                        @if (count($dokumenKategori->dokumen) == 0)
                         Tidak Ada file
                         @else
-                        @foreach ($dataDokumen as $dokumen)
+                        @foreach ($dokumenKategori->dokumen as $dokumen)
 
                         <div class="file-box">
                             <a href="#" class="download-icon-link">

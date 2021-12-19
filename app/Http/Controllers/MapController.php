@@ -42,6 +42,8 @@ class MapController extends Controller
             return "Point";
         else if ($type == 'MultiLineStringM')
             return "MultiLineString";
+        // else if ($type == 'LineString')
+        //     return "PolyLine";
         else if ($type == 'MultiPointM')
             return "MultiPoint";
         else if ($type == 'MultiPolygonM')
