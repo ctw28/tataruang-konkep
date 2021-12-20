@@ -30,40 +30,40 @@
                 <!--end has-submenu-->
                 <li class="has-submenu">
                     <a href="{{url('/')}}">
-                        <span><i data-feather="layers" class="align-self-center hori-menu-icon"></i>Peta</span>
+                        <span><i data-feather="map" class="align-self-center hori-menu-icon"></i>Peta</span>
                     </a>
 
                     <!--end submenu-->
                 </li>
                 <!--end has-submenu-->
 
-                <!-- <li class="has-submenu">
+                <li class="has-submenu">
                     <a href="#">
-                        <span><i data-feather="database" class="align-self-center hori-menu-icon"></i>Data</span>
+                        <span><i data-feather="database" class="align-self-center hori-menu-icon"></i>Pengaturan Pembinaan PR</span>
                     </a>
-                     <ul class="submenu">
-                        <li><a href="pages-blogs.html"><i class="ti ti-minus"></i>Blogs</a></li>
-                        <li><a href="pages-faqs.html"><i class="ti ti-minus"></i>FAQs</a></li>
-                        <li><a href="pages-pricing.html"><i class="ti ti-minus"></i>Pricing</a></li>
-                        <li><a href="pages-profile.html"><i class="ti ti-minus"></i>Profile</a></li>
-                        <li><a href="horizontal-starter.html"><i class="ti ti-minus"></i>Starter Page</a></li>
-                        <li><a href="pages-timeline.html"><i class="ti ti-minus"></i>Timeline</a></li>
-                        <li><a href="pages-treeview.html"><i class="ti ti-minus"></i>Treeview</a></li>
-                    </ul> \
-                </li> -->
+                    <ul class="submenu">
+                        <li><a href="pages-blogs.html"><i class="ti ti-minus"></i>Landasan Hukum</a></li>
+                        <li><a href="pages-faqs.html"><i class="ti ti-minus"></i>Kineja Penataan Ruanga</a></li>
+                    </ul>
+                </li>
                 <!--end has-submenu-->
 
                 <li class="has-submenu">
+                    <a href="{{route('web.tkprd')}}">
+                        <span><i data-feather="command" class="align-self-center hori-menu-icon"></i>TKPRD</span>
+                    </a>
+                </li>
+                <!-- <li class="has-submenu">
                     <a href="{{route('web.dokumen','semua')}}">
                         <span><i data-feather="folder" class="align-self-center hori-menu-icon"></i>Dokumen</span>
                     </a>
-                </li>
+                </li> -->
                 <!--end has-submenu-->
-                <li class="has-submenu">
+                <!-- <li class="has-submenu">
                     <a href="widgets.html">
                         <span><i data-feather="grid" class="align-self-center hori-menu-icon"></i>Survey</span>
                     </a>
-                </li>
+                </li> -->
                 <!--end has-submenu-->
                 <li class="has-submenu">
                     <a href="widgets.html">

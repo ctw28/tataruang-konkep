@@ -32,6 +32,7 @@ Route::get('/add-dbf', [MapController::class, 'dbf_add_column'])->name('dbf.add'
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/dokumen/kategori/{slug}', [WebController::class, 'index'])->name('web.dokumen');
+Route::get('/tkprd', [TkprdController::class, 'index'])->name('web.tkprd');
 
 Route::group(['prefix' => 'admin/dokumen'], function () {
     //kategori dokumen
