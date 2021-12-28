@@ -8,6 +8,7 @@ use App\Http\Controllers\DokumenKategoriController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PetaController;
 use App\Http\Controllers\Admin\SurveyController;
+use App\Http\Controllers\TkprdKegiatanController;
 
 
 /*
@@ -45,6 +46,35 @@ Route::group(['prefix' => 'admin/dokumen'], function () {
     Route::get('/kategori/{dokumenKategoriId}/tambah', [DokumenController::class, 'create'])->name('admin.dokumen.create');
     Route::post('/kategori/{dokumenKategoriId}/simpan', [DokumenController::class, 'store'])->name('admin.dokumen.store');
 });
+
+
+
+Route::group(['prefix' => 'admin/tkprd'], function () {
+    //TKPRD Kegiatan
+    Route::get('/', [TkprdKegiatanController::class, 'index'])->name('admin.tkprd.kegiatan.index');
+    Route::get('/tambah', [TkprdKegiatanController::class, 'create'])->name('admin.tkprd.kegiatan.create');
+    Route::post('/simpan', [TkprdKegiatanController::class, 'store'])->name('admin.tkprd.kegiatan.store');
+    Route::get('/{id}/kelola', [TkprdKegiatanController::class, 'kelola'])->name('admin.tkprd.kegiatan.kelola');
+    Route::get('/{id}/edit', [TkprdKegiatanController::class, 'edit'])->name('admin.tkprd.kegiatan.edit');
+    Route::post('/{id}/update', [TkprdKegiatanController::class, 'update'])->name('admin.tkprd.kegiatan.update');
+    Route::get('/{id}/hapus', [TkprdKegiatanController::class, 'delete'])->name('admin.tkprd.kegiatan.delete');
+
+    //API untuk get data survey
+    Route::get('/{kegiatanId}/kelola/survey', [TkprdKegiatanController::class, 'surveyIndex'])->name('admin.tkprd.kegiatan.survey.index');
+    Route::get('/{kegiatanId}/kelola/survey/{surveyId}/get', [TkprdKegiatanController::class, 'surveyGet'])->name('admin.tkprd.kegiatan.survey.get');
+    Route::post('/{kegiatanId}/kelola/survey/simpan', [TkprdKegiatanController::class, 'surveyStore'])->name('admin.tkprd.kegiatan.survey.store');
+    Route::post('/{kegiatanId}/kelola/survey/{surveyId}/update', [TkprdKegiatanController::class, 'surveyUpdate'])->name('admin.tkprd.kegiatan.survey.update');
+    Route::get('/kelola/survey/{surveyId}/delete', [TkprdKegiatanController::class, 'surveyDelete'])->name('admin.tkprd.kegiatan.survey.delete');
+
+    Route::get('/{kegiatanId}/kelola/survey/{surveyId}', [TkprdKegiatanController::class, 'surveyKelolaIndex'])->name('admin.tkprd.kegiatan.survey.kelola.index');
+    Route::get('/{kegiatanId}/kelola/survey/{surveyId}/kategori/{fileKategori}', [TkprdKegiatanController::class, 'surveyKelolaGet'])->name('admin.tkprd.kegiatan.survey.kelola.get');
+    Route::post('/{kegiatanId}/kelola/survey/{surveyId}/simpan', [TkprdKegiatanController::class, 'surveyKelolaStore'])->name('admin.tkprd.kegiatan.survey.kelola.store');
+    Route::get('/kelola/survey/file/{fileId}hapus', [TkprdKegiatanController::class, 'surveyKelolaDelete'])->name('admin.tkprd.kegiatan.survey.kelola.delete');
+});
+
+
+
+
 Route::group(['prefix' => 'admin/survey'], function () {
     //Survey
     Route::get('/', [SurveyController::class, 'index'])->name('admin.survey.index');
