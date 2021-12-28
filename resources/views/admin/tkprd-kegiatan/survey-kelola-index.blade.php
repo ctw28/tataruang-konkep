@@ -210,6 +210,7 @@ async function loadFiles(kategoriId) {
 function setKategori(id) {
     kategoriId = id
 }
+//ini komen
 async function uploadFile() {
     console.log(kategoriId);
     let url =
